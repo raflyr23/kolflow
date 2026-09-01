@@ -2,8 +2,9 @@
 
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 import { useApp } from '../../components/AppProvider';
-import { IconSparkles, IconEye, IconEyeOff, IconCheck, IconAlertCircle } from '../../components/Icons';
+import { IconSparkles, IconEye, IconEyeOff, IconCheck, IconAlertCircle, IconChevronRight } from '../../components/Icons';
 
 export default function LoginPage() {
   const router = useRouter();
@@ -92,8 +93,12 @@ export default function LoginPage() {
       </div>
 
       {/* Right Side - Login Form */}
-      <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 md:px-20 lg:px-24">
-        <div className="w-full max-w-md mx-auto">
+      <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 md:px-20 lg:px-24 relative">
+        <Link href="/" className="absolute top-8 left-6 sm:left-12 md:left-20 lg:left-24 flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">
+          <IconChevronRight className="w-4 h-4 rotate-180" />
+          Back to Home
+        </Link>
+        <div className="w-full max-w-md mx-auto mt-12 sm:mt-0">
           <div className="lg:hidden flex items-center gap-3 mb-12 justify-center">
             <div className="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center">
               <IconSparkles className="w-6 h-6 text-white" />
