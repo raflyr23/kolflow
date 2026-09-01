@@ -16,6 +16,7 @@ import {
   IconSparkles, 
   IconEdit, 
   IconPlus,
+  IconCheck,
   IconChevronRight,
   IconCalendar,
   IconUsers,
@@ -243,7 +244,7 @@ export default function CampaignDetailPage() {
     return (
       <DashboardLayout>
         <EmptyState
-          icon={<IconAlertCircle className="w-12 h-12 text-slate-300" />}
+          variant="error"
           title="Campaign Not Found"
           description="The campaign you are looking for does not exist or has been deleted."
           action={
@@ -489,7 +490,7 @@ export default function CampaignDetailPage() {
               
               {campaign.kols.length === 0 ? (
                 <EmptyState
-                  icon={<IconUsers className="w-12 h-12 text-slate-300" />}
+                  variant="no-data"
                   title="No KOLs added yet"
                   description="Start by adding influencers to this campaign."
                   action={

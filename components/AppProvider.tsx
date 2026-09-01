@@ -95,9 +95,10 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const newEntry: ActivityLog = {
       id: Math.random().toString(36).substring(2, 9),
       action,
-      details,
+      detail: details,
       timestamp: new Date().toISOString(),
       campaignId,
+      campaignName: campaignId ? campaigns.find(c => c.id === campaignId)?.name : '',
       kolId
     };
     saveActivity([newEntry, ...activityLog]);
@@ -145,7 +146,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const addKOL = (campaignId: string, kol: KOL) => {
     const newCampaigns = campaigns.map(c => c.id === campaignId ? { ...c, kols: [...c.kols, kol], updatedAt: new Date().toISOString() } : c);
     saveCampaigns(newCampaigns);
-    addActivity('kol_added', `Added KOL ${kol.handle}`, campaignId, kol.id);
+    addActivity('kol_added', `Added KOL ${kol.name}`, campaignId, kol.id);
     showToast('KOL added successfully', 'success');
   };
 

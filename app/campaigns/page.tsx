@@ -140,8 +140,8 @@ export default function CampaignsPage() {
       id: 'c' + Date.now(),
       name: formData.name,
       description: formData.description,
-      startDate: formData.startDate || undefined,
-      endDate: formData.endDate || undefined,
+      startDate: formData.startDate || '',
+      endDate: formData.endDate || '',
       budget: budgetNum,
       spent: 0,
       status: 'Draft',
@@ -272,7 +272,7 @@ export default function CampaignsPage() {
         {/* Content */}
         {filteredAndSortedCampaigns.length === 0 ? (
           <EmptyState
-            icon={<IconCalendar className="w-12 h-12 text-slate-300" />}
+            variant="no-results"
             title="No campaigns found"
             description={searchTerm ? `No campaigns matching "${searchTerm}"` : "Get started by creating your first campaign."}
             action={

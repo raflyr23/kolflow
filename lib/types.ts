@@ -31,12 +31,13 @@ export interface Campaign {
   updatedAt: string;
 }
 
-export type ActivityAction = 'kol_added' | 'kol_removed' | 'status_changed' | 'campaign_created' | 'campaign_updated' | 'campaign_deleted';
+export type ActivityAction = 'kol_added' | 'kol_removed' | 'status_changed' | 'campaign_created' | 'campaign_updated' | 'campaign_deleted' | 'campaign_status_changed' | 'kol_updated' | 'kol_status_changed';
 
 export interface ActivityLog {
   id: string;
-  campaignId: string;
-  campaignName: string;
+  campaignId?: string;
+  campaignName?: string;
+  kolId?: string;
   action: ActivityAction;
   detail: string;
   timestamp: string;

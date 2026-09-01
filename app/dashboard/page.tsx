@@ -31,8 +31,8 @@ export default function DashboardPage() {
   
   const allKols = campaigns.flatMap(c => c.kols);
   const totalViews = allKols.reduce((sum, k) => sum + k.views, 0);
-  const totalEngagements = allKols.reduce((sum, k) => sum + k.engagements, 0);
-  const avgEngagementRate = totalViews > 0 ? ((totalEngagements / totalViews) * 100).toFixed(1) : '0.0';
+  const totalEngagementRateSum = allKols.reduce((sum, k) => sum + k.engagementRate, 0);
+  const avgEngagementRate = allKols.length > 0 ? (totalEngagementRateSum / allKols.length).toFixed(1) : '0.0';
 
   const barChartData = campaigns.map(c => ({
     label: c.name.split(' ')[0],
@@ -145,7 +145,7 @@ export default function DashboardPage() {
                 size={140} 
                 strokeWidth={24} 
                 centerLabel="KOLs" 
-                centerValue={totalKOLs} 
+                centerValue={totalKOLs.toString()} 
               />
             ) : (
               <div className="text-sm text-slate-500">No KOLs in pipeline.</div>
