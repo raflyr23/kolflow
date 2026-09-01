@@ -49,7 +49,7 @@ export const ConfirmDialog = ({
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fade-in" onClick={onCancel}>
-      <div className="bg-white rounded-xl shadow-xl w-full max-w-sm overflow-hidden animate-scale-in" onClick={(e) => e.stopPropagation()}>
+      <div className="bg-white rounded-lg shadow-lg w-full max-w-sm overflow-hidden animate-scale-in" onClick={(e) => e.stopPropagation()}>
         <div className="p-6">
           <div className={`w-10 h-10 rounded-full ${styles.icon} flex items-center justify-center mb-4`}>
             <IconAlertCircle className="w-5 h-5" />
@@ -75,3 +75,4 @@ export const ConfirmDialog = ({
     </div>
   );
 };
+

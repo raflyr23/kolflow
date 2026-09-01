@@ -80,10 +80,10 @@ export default function AnalyticsPage() {
 
         {/* KPI Row */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+          <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center">
-                <IconDollarSign className="w-6 h-6 text-indigo-600" />
+              <div className="w-12 h-12 rounded-lg bg-slate-100 flex items-center justify-center">
+                <IconDollarSign className="w-6 h-6 text-slate-900" />
               </div>
               <div>
                 <p className="text-sm font-medium text-slate-500 mb-1">Total Budget</p>
@@ -91,9 +91,9 @@ export default function AnalyticsPage() {
               </div>
             </div>
           </div>
-          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+          <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-lg bg-amber-50 flex items-center justify-center">
                 <IconTrendingUp className="w-6 h-6 text-amber-600" />
               </div>
               <div>
@@ -102,9 +102,9 @@ export default function AnalyticsPage() {
               </div>
             </div>
           </div>
-          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+          <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-lg bg-blue-50 flex items-center justify-center">
                 <IconUsers className="w-6 h-6 text-blue-600" />
               </div>
               <div>
@@ -113,9 +113,9 @@ export default function AnalyticsPage() {
               </div>
             </div>
           </div>
-          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+          <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center">
+              <div className="w-12 h-12 rounded-lg bg-emerald-50 flex items-center justify-center">
                 <IconEye className="w-6 h-6 text-emerald-600" />
               </div>
               <div>
@@ -128,7 +128,7 @@ export default function AnalyticsPage() {
 
         {/* Charts Row */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col">
+          <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm flex flex-col">
             <h2 className="text-lg font-bold text-slate-900 mb-6">Campaign Views</h2>
             <div className="flex-1 flex items-end">
               {campaignPerformanceData.length > 0 ? (
@@ -139,7 +139,7 @@ export default function AnalyticsPage() {
             </div>
           </div>
           
-          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col">
+          <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm flex flex-col">
             <h2 className="text-lg font-bold text-slate-900 mb-6">Platform Distribution</h2>
             <div className="flex-1 flex items-center justify-center pb-4">
               {platformDistribution.length > 0 ? (
@@ -158,7 +158,7 @@ export default function AnalyticsPage() {
         </div>
 
         {/* KOL Status Pipeline */}
-        <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
           <h2 className="text-lg font-bold text-slate-900 mb-6">KOL Status Pipeline</h2>
           <div className="flex h-8 rounded-lg overflow-hidden">
             {Object.entries(statusCounts).map(([status, count]) => {
@@ -196,7 +196,7 @@ export default function AnalyticsPage() {
 
         {/* Top Performers & Budget Utilization Row */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden flex flex-col">
+          <div className="lg:col-span-2 bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden flex flex-col">
             <div className="p-6 border-b border-slate-100">
               <h2 className="text-lg font-bold text-slate-900">Top Performers</h2>
             </div>
@@ -204,10 +204,10 @@ export default function AnalyticsPage() {
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-slate-50 border-b border-slate-100">
-                    <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase">KOL</th>
-                    <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase">Campaign</th>
-                    <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase">Views</th>
-                    <th className="px-6 py-3 text-xs font-semibold text-slate-500 uppercase">Eng. Rate</th>
+                    <th className="px-4 py-2 text-sm text-xs font-semibold text-slate-500 uppercase">KOL</th>
+                    <th className="px-4 py-2 text-sm text-xs font-semibold text-slate-500 uppercase">Campaign</th>
+                    <th className="px-4 py-2 text-sm text-xs font-semibold text-slate-500 uppercase">Views</th>
+                    <th className="px-4 py-2 text-sm text-xs font-semibold text-slate-500 uppercase">Eng. Rate</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-100">
@@ -249,7 +249,7 @@ export default function AnalyticsPage() {
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex flex-col">
+          <div className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm flex flex-col">
             <h2 className="text-lg font-bold text-slate-900 mb-6">Budget Utilization</h2>
             <div className="flex-1 flex items-end">
               {budgetUtilizationData.length > 0 ? (
@@ -267,3 +267,4 @@ export default function AnalyticsPage() {
     </DashboardLayout>
   );
 }
+

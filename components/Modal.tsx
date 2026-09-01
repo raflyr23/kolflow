@@ -39,7 +39,7 @@ export const Modal = ({ title, onClose, children, size = 'md', footer }: ModalPr
     >
       <div
         ref={contentRef}
-        className={`bg-white rounded-xl shadow-xl w-full ${sizeClasses[size]} overflow-hidden animate-scale-in`}
+        className={`bg-white rounded-lg shadow-lg w-full ${sizeClasses[size]} overflow-hidden animate-scale-in`}
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex justify-between items-center px-6 py-4 border-b border-slate-200">

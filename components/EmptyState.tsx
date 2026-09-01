@@ -13,20 +13,20 @@ export const EmptyState = ({ title, description, action, variant = 'no-data' }: 
       {/* CSS-only illustration */}
       <div className="mb-6 relative">
         {variant === 'no-data' && (
-          <div className="w-16 h-16 rounded-2xl bg-slate-100 border-2 border-dashed border-slate-300 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-lg bg-slate-100 border-2 border-dashed border-slate-300 flex items-center justify-center">
             <div className="w-6 h-0.5 bg-slate-300 rounded-full"></div>
           </div>
         )}
         {variant === 'no-results' && (
-          <div className="w-16 h-16 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center">
-            <div className="w-6 h-6 border-2 border-slate-300 rounded-full relative">
-              <div className="absolute -bottom-1.5 -right-1.5 w-3 h-0.5 bg-slate-300 rounded-full rotate-45 origin-left"></div>
+          <div className="w-12 h-12 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center">
+            <div className="w-5 h-5 border-2 border-slate-300 rounded-full relative">
+              <div className="absolute -bottom-1 -right-1 w-2.5 h-0.5 bg-slate-300 rounded-full rotate-45 origin-left"></div>
             </div>
           </div>
         )}
         {variant === 'error' && (
-          <div className="w-16 h-16 rounded-2xl bg-red-50 border border-red-200 flex items-center justify-center">
-            <span className="text-red-400 text-2xl font-bold">!</span>
+          <div className="w-12 h-12 rounded-lg bg-red-50 border border-red-200 flex items-center justify-center">
+            <span className="text-red-400 text-xl font-bold">!</span>
           </div>
         )}
       </div>
@@ -36,3 +36,4 @@ export const EmptyState = ({ title, description, action, variant = 'no-data' }: 
     </div>
   );
 };
+

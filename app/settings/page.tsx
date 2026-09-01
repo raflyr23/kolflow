@@ -68,7 +68,7 @@ export default function SettingsPage() {
         </div>
 
         {/* Profile Section */}
-        <section className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <section className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
           <h2 className="text-lg font-bold text-slate-900 mb-6 border-b border-slate-100 pb-4">Profile</h2>
           <div className="flex items-center gap-6">
             <div className="w-20 h-20 bg-indigo-600 rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-md">
@@ -89,13 +89,13 @@ export default function SettingsPage() {
         </section>
 
         {/* Data Management Section */}
-        <section className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <section className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
           <h2 className="text-lg font-bold text-slate-900 mb-6 border-b border-slate-100 pb-4">Data Management</h2>
           
           <div className="grid md:grid-cols-2 gap-6">
             {/* Export/Import */}
             <div className="space-y-4">
-              <div className="p-4 border border-slate-100 rounded-xl bg-slate-50">
+              <div className="p-4 border border-slate-100 rounded-lg bg-slate-50">
                 <h4 className="font-semibold text-slate-900 mb-1">Export Data</h4>
                 <p className="text-sm text-slate-500 mb-4">Download a JSON backup of all campaigns, KOLs, and settings.</p>
                 <button 
@@ -107,7 +107,7 @@ export default function SettingsPage() {
                 </button>
               </div>
 
-              <div className="p-4 border border-slate-100 rounded-xl bg-slate-50">
+              <div className="p-4 border border-slate-100 rounded-lg bg-slate-50">
                 <h4 className="font-semibold text-slate-900 mb-1">Import Data</h4>
                 <p className="text-sm text-slate-500 mb-4">Restore your workspace from a previous JSON backup file.</p>
                 <input 
@@ -128,7 +128,7 @@ export default function SettingsPage() {
             </div>
 
             {/* Reset */}
-            <div className="p-4 border border-red-100 rounded-xl bg-red-50/50 flex flex-col h-full">
+            <div className="p-4 border border-red-100 rounded-lg bg-red-50/50 flex flex-col h-full">
               <h4 className="font-semibold text-red-900 mb-1">Danger Zone</h4>
               <p className="text-sm text-red-700/80 mb-6 flex-1">
                 Permanently delete all campaigns, KOLs, and logs. This action cannot be undone unless you have a backup.
@@ -165,7 +165,7 @@ export default function SettingsPage() {
         </section>
 
         {/* Keyboard Shortcuts */}
-        <section className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <section className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm">
           <h2 className="text-lg font-bold text-slate-900 mb-6 border-b border-slate-100 pb-4">Keyboard Shortcuts</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
@@ -188,8 +188,8 @@ export default function SettingsPage() {
         </section>
 
         {/* About Section */}
-        <section className="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm text-center">
-          <div className="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center mx-auto mb-4">
+        <section className="bg-white p-6 rounded-lg border border-slate-200 shadow-sm text-center">
+          <div className="w-12 h-12 bg-slate-900 rounded-lg flex items-center justify-center mx-auto mb-4">
             <span className="text-white font-bold text-xl">K</span>
           </div>
           <h3 className="font-bold text-slate-900 mb-1">KOLFlow</h3>
@@ -200,10 +200,10 @@ export default function SettingsPage() {
             <span className="px-2 py-1 rounded-md bg-slate-100 text-slate-700">Tailwind CSS 4</span>
           </div>
           <a 
-            href="https://github.com/your-username/kolflow" 
+            href="https://github.com/raflyr23/kolflow" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-sm text-indigo-600 hover:text-indigo-700 font-medium hover:underline"
+            className="text-sm text-slate-900 hover:text-slate-600 font-medium hover:underline"
           >
             View Source on GitHub
           </a>
@@ -212,3 +212,4 @@ export default function SettingsPage() {
     </DashboardLayout>
   );
 }
+

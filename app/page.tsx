@@ -15,7 +15,7 @@ export default function LandingPage() {
   const { isAuth } = useApp();
 
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col font-sans selection:bg-indigo-100 selection:text-indigo-900">
+    <div className="min-h-screen bg-slate-50 flex flex-col font-sans selection:bg-slate-200 selection:text-indigo-900">
       {/* Header */}
       <header className="border-b border-slate-200 bg-white sticky top-0 z-10">
         <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -59,12 +59,12 @@ export default function LandingPage() {
           <div className="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
             {/* Left Column */}
             <div className="flex-1 text-center lg:text-left animate-fade-in-up">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700 text-sm font-medium mb-6">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 border border-indigo-100 text-indigo-700 text-sm font-medium mb-6">
                 <IconSparkles className="w-4 h-4" />
                 <span>v2.0 — Now with Analytics</span>
               </div>
               <h1 className="text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.1] mb-6">
-                Track influencer campaigns with <span className="text-indigo-600">precision.</span>
+                Track influencer campaigns with <span className="text-slate-900">precision.</span>
               </h1>
               <p className="text-lg text-slate-600 mb-8 max-w-xl mx-auto lg:mx-0 leading-relaxed">
                 Streamline your KOL marketing workflow. Manage creators, track budgets, and measure performance across all platforms in one powerful workspace.
@@ -72,16 +72,16 @@ export default function LandingPage() {
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
                 <Link
                   href="/login"
-                  className="flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20"
+                  className="flex items-center gap-2 px-4 py-2 text-sm bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/20"
                 >
                   Start Demo Workspace
                   <IconChevronRight className="w-4 h-4" />
                 </Link>
                 <a
-                  href="https://github.com/your-username/kolflow"
+                  href="https://github.com/raflyr23/kolflow"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 bg-white text-slate-700 border border-slate-200 rounded-xl font-medium hover:bg-slate-50 transition-colors"
+                  className="flex items-center gap-2 px-4 py-2 text-sm bg-white text-slate-700 border border-slate-200 rounded-lg font-medium hover:bg-slate-50 transition-colors"
                 >
                   View on GitHub
                 </a>
@@ -90,12 +90,12 @@ export default function LandingPage() {
 
             {/* Right Column: Abstract Dashboard Preview */}
             <div className="flex-1 w-full max-w-lg lg:max-w-none animate-fade-in-up" style={{ animationDelay: '100ms' }}>
-              <div className="bg-white rounded-2xl border border-slate-200 shadow-2xl p-6 relative overflow-hidden">
+              <div className="bg-white rounded-lg border border-slate-200 shadow-lg p-6 relative overflow-hidden">
                 {/* Decorative header */}
                 <div className="flex items-center justify-between mb-8 pb-4 border-b border-slate-100">
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center">
-                      <IconChart className="w-5 h-5 text-indigo-600" />
+                    <div className="w-10 h-10 bg-slate-200 rounded-full flex items-center justify-center">
+                      <IconChart className="w-5 h-5 text-slate-900" />
                     </div>
                     <div>
                       <div className="h-4 w-24 bg-slate-200 rounded mb-1.5" />
@@ -110,7 +110,7 @@ export default function LandingPage() {
 
                 {/* KPI Cards */}
                 <div className="grid grid-cols-2 gap-4 mb-6">
-                  <div className="p-4 rounded-xl border border-slate-100 bg-slate-50/50">
+                  <div className="p-4 rounded-lg border border-slate-100 bg-slate-50/50">
                     <div className="h-3 w-20 bg-slate-200 rounded mb-3" />
                     <div className="h-6 w-24 bg-slate-900 rounded mb-2" />
                     <div className="flex items-center gap-1">
@@ -118,7 +118,7 @@ export default function LandingPage() {
                       <div className="h-2 w-12 bg-emerald-100 rounded" />
                     </div>
                   </div>
-                  <div className="p-4 rounded-xl border border-slate-100 bg-slate-50/50">
+                  <div className="p-4 rounded-lg border border-slate-100 bg-slate-50/50">
                     <div className="h-3 w-20 bg-slate-200 rounded mb-3" />
                     <div className="h-6 w-24 bg-slate-900 rounded mb-2" />
                     <div className="flex items-center gap-1">
@@ -133,7 +133,7 @@ export default function LandingPage() {
                   {[40, 70, 45, 90, 65, 80].map((h, i) => (
                     <div key={i} className="flex-1 flex flex-col justify-end items-center gap-2 h-full">
                       <div 
-                        className="w-full rounded-t-md bg-indigo-500" 
+                        className="w-full rounded-t-md bg-slate-1000" 
                         style={{ height: `${h}%` }}
                       />
                     </div>
@@ -162,8 +162,8 @@ export default function LandingPage() {
             
             <div className="grid md:grid-cols-3 gap-8">
               {/* Feature 1 */}
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-indigo-100 text-indigo-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="p-6 rounded-lg bg-slate-50 border border-slate-100 hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 bg-slate-200 text-slate-900 rounded-lg flex items-center justify-center mb-6">
                   <IconGrid className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Campaign Kanban</h3>
@@ -173,8 +173,8 @@ export default function LandingPage() {
               </div>
 
               {/* Feature 2 */}
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="p-6 rounded-lg bg-slate-50 border border-slate-100 hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-lg flex items-center justify-center mb-6">
                   <IconChart className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Live Analytics</h3>
@@ -184,8 +184,8 @@ export default function LandingPage() {
               </div>
 
               {/* Feature 3 */}
-              <div className="p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-amber-100 text-amber-600 rounded-xl flex items-center justify-center mb-6">
+              <div className="p-6 rounded-lg bg-slate-50 border border-slate-100 hover:shadow-md transition-shadow">
+                <div className="w-12 h-12 bg-amber-100 text-amber-600 rounded-lg flex items-center justify-center mb-6">
                   <IconSparkles className="w-6 h-6" />
                 </div>
                 <h3 className="text-xl font-bold text-slate-900 mb-3">Smart Matching</h3>

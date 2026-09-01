@@ -115,7 +115,7 @@ const CommandPalette: React.FC = () => {
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-[20vh] bg-black/40 backdrop-blur-sm" onClick={() => setIsOpen(false)}>
       <div 
-        className="w-full max-w-lg bg-white rounded-xl shadow-2xl overflow-hidden" 
+        className="w-full max-w-lg bg-white rounded-lg shadow-lg overflow-hidden" 
         onClick={e => e.stopPropagation()}
       >
         <div className="flex items-center px-4 py-3 border-b border-slate-100">
@@ -202,3 +202,4 @@ const CommandPalette: React.FC = () => {
 };
 
 export default CommandPalette;
+

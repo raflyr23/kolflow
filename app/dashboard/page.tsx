@@ -83,7 +83,7 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-5 mb-8">
-        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm animate-fade-in-up" style={{ animationDelay: '50ms' }}>
+        <div className="bg-white p-5 rounded-lg border border-slate-200 shadow-sm animate-fade-in-up" style={{ animationDelay: '50ms' }}>
           <div className="flex items-center justify-between mb-3">
             <div className="w-9 h-9 rounded-lg bg-blue-50 flex items-center justify-center">
               <IconCalendar className="w-4 h-4 text-blue-600" />
@@ -93,7 +93,7 @@ export default function DashboardPage() {
           <p className="text-xs text-slate-500 mt-1">of {campaigns.length} total</p>
         </div>
 
-        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm animate-fade-in-up" style={{ animationDelay: '100ms' }}>
+        <div className="bg-white p-5 rounded-lg border border-slate-200 shadow-sm animate-fade-in-up" style={{ animationDelay: '100ms' }}>
           <div className="flex items-center justify-between mb-3">
             <div className="w-9 h-9 rounded-lg bg-violet-50 flex items-center justify-center">
               <IconUsers className="w-4 h-4 text-violet-600" />
@@ -103,7 +103,7 @@ export default function DashboardPage() {
           <p className="text-xs text-slate-500 mt-1">{completedKOLsPercentage}% completed</p>
         </div>
 
-        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm animate-fade-in-up" style={{ animationDelay: '150ms' }}>
+        <div className="bg-white p-5 rounded-lg border border-slate-200 shadow-sm animate-fade-in-up" style={{ animationDelay: '150ms' }}>
           <div className="flex items-center justify-between mb-3">
             <div className="w-9 h-9 rounded-lg bg-emerald-50 flex items-center justify-center">
               <IconDollarSign className="w-4 h-4 text-emerald-600" />
@@ -113,7 +113,7 @@ export default function DashboardPage() {
           <p className="text-xs text-slate-500 mt-1">of {formatCurrency(totalBudget)}</p>
         </div>
 
-        <div className="bg-white p-5 rounded-xl border border-slate-200 shadow-sm animate-fade-in-up" style={{ animationDelay: '200ms' }}>
+        <div className="bg-white p-5 rounded-lg border border-slate-200 shadow-sm animate-fade-in-up" style={{ animationDelay: '200ms' }}>
           <div className="flex items-center justify-between mb-3">
             <div className="w-9 h-9 rounded-lg bg-amber-50 flex items-center justify-center">
               <IconTrendingUp className="w-4 h-4 text-amber-600" />
@@ -125,7 +125,7 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-6">
-        <div className="lg:col-span-3 bg-white border border-slate-200 rounded-xl shadow-sm p-5">
+        <div className="lg:col-span-3 bg-white border border-slate-200 rounded-lg shadow-sm p-5">
           <h3 className="text-base font-semibold text-slate-900 mb-6">Campaign Performance</h3>
           {barChartData.length > 0 ? (
             <BarChart data={barChartData} height={200} showValues={true} />
@@ -136,7 +136,7 @@ export default function DashboardPage() {
           )}
         </div>
         
-        <div className="lg:col-span-2 bg-white border border-slate-200 rounded-xl shadow-sm p-5 flex flex-col">
+        <div className="lg:col-span-2 bg-white border border-slate-200 rounded-lg shadow-sm p-5 flex flex-col">
           <h3 className="text-base font-semibold text-slate-900 mb-6">KOL Pipeline</h3>
           <div className="flex-1 flex items-center justify-center pb-4">
             {donutData.length > 0 ? (
@@ -155,7 +155,7 @@ export default function DashboardPage() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 mb-8">
-        <div className="lg:col-span-3 bg-white border border-slate-200 rounded-xl shadow-sm p-5">
+        <div className="lg:col-span-3 bg-white border border-slate-200 rounded-lg shadow-sm p-5">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-base font-semibold text-slate-900">Recent Activity</h3>
             <Link href="/analytics" className="text-sm font-medium text-blue-600 hover:text-blue-700">
@@ -187,7 +187,7 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        <div className="lg:col-span-2 bg-white border border-slate-200 rounded-xl shadow-sm p-5">
+        <div className="lg:col-span-2 bg-white border border-slate-200 rounded-lg shadow-sm p-5">
           <div className="flex items-center justify-between mb-4">
             <h3 className="text-base font-semibold text-slate-900">Active Campaigns</h3>
             <Link href="/campaigns" className="text-sm font-medium text-blue-600 hover:text-blue-700">

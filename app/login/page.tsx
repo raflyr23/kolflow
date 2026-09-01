@@ -64,7 +64,7 @@ export default function LoginPage() {
         
         <div className="relative z-10 flex flex-col h-full">
           <div className="flex items-center gap-3 mb-16">
-            <div className="w-10 h-10 bg-indigo-500 rounded-xl flex items-center justify-center shadow-lg shadow-indigo-500/20">
+            <div className="w-10 h-10 bg-slate-1000 rounded-lg flex items-center justify-center shadow-lg shadow-indigo-500/20">
               <IconSparkles className="w-6 h-6 text-white" />
             </div>
             <span className="font-bold text-2xl tracking-tight">KOLFlow</span>
@@ -100,7 +100,7 @@ export default function LoginPage() {
         </Link>
         <div className="w-full max-w-md mx-auto mt-12 sm:mt-0">
           <div className="lg:hidden flex items-center gap-3 mb-12 justify-center">
-            <div className="w-10 h-10 bg-slate-900 rounded-xl flex items-center justify-center">
+            <div className="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center">
               <IconSparkles className="w-6 h-6 text-white" />
             </div>
             <span className="font-bold text-2xl tracking-tight text-slate-900">KOLFlow</span>
@@ -119,7 +119,7 @@ export default function LoginPage() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full h-11 px-4 bg-white border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all shadow-sm"
+                className="w-full h-9 px-4 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900/20 focus:border-slate-900 transition-all shadow-sm"
               />
             </div>
             
@@ -131,7 +131,7 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full h-11 pl-4 pr-11 bg-white border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all shadow-sm"
+                  className="w-full h-9 pl-4 pr-11 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900/20 focus:border-slate-900 transition-all shadow-sm"
                 />
                 <button
                   type="button"
@@ -153,7 +153,7 @@ export default function LoginPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full h-11 bg-slate-900 text-white rounded-xl font-medium hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900/20 active:scale-[0.98] transition-all disabled:opacity-70 flex items-center justify-center shadow-sm"
+              className="w-full h-9 bg-slate-900 text-white rounded-lg font-medium hover:bg-slate-800 focus:outline-none focus:ring-2 focus:ring-slate-900/20 active:scale-[0.98] transition-all disabled:opacity-70 flex items-center justify-center shadow-sm"
             >
               {isLoading ? 'Signing in...' : 'Sign In'}
             </button>
@@ -172,13 +172,13 @@ export default function LoginPage() {
             type="button"
             onClick={handleDemoLogin}
             disabled={isLoading}
-            className="w-full h-11 bg-white text-slate-900 border-2 border-slate-200 rounded-xl font-semibold hover:border-slate-900 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-900/20 active:scale-[0.98] transition-all disabled:opacity-70 flex items-center justify-center gap-2 shadow-sm"
+            className="w-full h-9 bg-white text-slate-900 border-2 border-slate-200 rounded-lg font-semibold hover:border-slate-900 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-900/20 active:scale-[0.98] transition-all disabled:opacity-70 flex items-center justify-center gap-2 shadow-sm"
           >
             <IconSparkles className="w-4 h-4" />
             Try Demo Instantly
           </button>
 
-          <div className="mt-8 p-4 bg-indigo-50/50 border border-indigo-100 rounded-xl text-sm text-indigo-800 text-center">
+          <div className="mt-8 p-4 bg-slate-100/50 border border-indigo-100 rounded-lg text-sm text-indigo-800 text-center">
             <p className="font-medium mb-1">Demo Credentials</p>
             <p className="opacity-80">Email: admin@kolflow.demo</p>
             <p className="opacity-80">Password: password</p>
