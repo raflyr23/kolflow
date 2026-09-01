@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 interface TooltipProps {
   text: string;
@@ -25,3 +25,4 @@ export const Tooltip = ({ text, children, position = 'top' }: TooltipProps) => {
     </div>
   );
 };
+

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useMemo } from 'react';
 import { useApp } from '../../components/AppProvider';
@@ -120,4 +120,5 @@ export default function KolDatabasePage() {
     </DashboardLayout>
   );
 }
+
 

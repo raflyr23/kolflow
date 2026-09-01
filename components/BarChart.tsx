@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 interface BarChartData {
   label: string;
@@ -50,4 +50,5 @@ export const BarChart = ({ data, height = 200, showValues = true }: BarChartProp
     </div>
   );
 };
+
 

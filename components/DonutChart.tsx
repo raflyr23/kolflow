@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 interface DonutSegment {
   label: string;
@@ -85,5 +85,6 @@ export const DonutChart = ({
     </div>
   );
 };
+
 
 

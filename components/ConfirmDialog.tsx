@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect } from 'react';
 import { IconAlertCircle } from './Icons';
@@ -75,5 +75,6 @@ export const ConfirmDialog = ({
     </div>
   );
 };
+
 
 

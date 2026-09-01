@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import Link from 'next/link';
@@ -186,7 +186,7 @@ export default function DashboardPage() {
                     <p className="text-sm text-slate-700 dark:text-slate-300">{activity.detail}</p>
                     <div className="flex items-center gap-2 mt-1">
                       <span className="text-xs text-slate-400" suppressHydrationWarning>{formatRelativeDate(activity.timestamp)}</span>
-                      <span className="text-xs text-slate-400">·</span>
+                      <span className="text-xs text-slate-400">Â·</span>
                       <span className="text-xs text-slate-500 dark:text-slate-400 font-medium truncate">{activity.campaignName}</span>
                     </div>
                   </div>
@@ -238,6 +238,7 @@ export default function DashboardPage() {
     </DashboardLayout>
   );
 }
+
 
 
 

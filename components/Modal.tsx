@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useRef } from 'react';
 import { IconClose } from './Icons';
@@ -61,4 +61,5 @@ export const Modal = ({ title, onClose, children, size = 'md', footer }: ModalPr
     </div>
   );
 };
+
 

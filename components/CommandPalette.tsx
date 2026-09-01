@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
@@ -55,7 +55,7 @@ const CommandPalette: React.FC = () => {
     const campaignItems: CommandItem[] = campaigns.map(c => ({
       id: `camp-${c.id}`,
       label: c.name,
-      description: `Campaign • ${c.status}`,
+      description: `Campaign â€¢ ${c.status}`,
       category: 'Campaigns',
       icon: <IconUsers className="w-4 h-4" />,
       action: () => router.push(`/campaigns/${c.id}`)
@@ -202,5 +202,6 @@ const CommandPalette: React.FC = () => {
 };
 
 export default CommandPalette;
+
 
 

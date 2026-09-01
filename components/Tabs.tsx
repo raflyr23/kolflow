@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
 
@@ -67,4 +67,5 @@ export const Tabs = ({ tabs, activeTab, onChange }: TabsProps) => {
     </div>
   );
 };
+
 

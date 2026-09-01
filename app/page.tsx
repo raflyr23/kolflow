@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Link from 'next/link';
 import { useApp } from '../components/AppProvider';
@@ -61,7 +61,7 @@ export default function LandingPage() {
             <div className="flex-1 text-center lg:text-left animate-fade-in-up">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 border border-indigo-100 text-indigo-700 text-sm font-medium mb-6">
                 <IconSparkles className="w-4 h-4" />
-                <span>v2.0 — Now with Analytics</span>
+                <span>v2.0 â€” Now with Analytics</span>
               </div>
               <h1 className="text-4xl lg:text-5xl font-semibold text-slate-900 dark:text-white tracking-tight leading-[1.1] mb-6">
                 Track influencer campaigns with <span className="text-slate-900 dark:text-white">precision.</span>
@@ -201,7 +201,7 @@ export default function LandingPage() {
       {/* Footer */}
       <footer className="py-8 px-6 bg-slate-900 text-slate-400 text-center text-sm">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p>© {new Date().getFullYear()} KOLFlow. Built as a portfolio project.</p>
+          <p>Â© {new Date().getFullYear()} KOLFlow. Built as a portfolio project.</p>
           <div className="flex items-center gap-4 text-xs font-medium">
             <span className="px-2 py-1 rounded bg-slate-800">React 19</span>
             <span className="px-2 py-1 rounded bg-slate-800">Next.js 16</span>
@@ -213,6 +213,7 @@ export default function LandingPage() {
     </div>
   );
 }
+
 
 
 

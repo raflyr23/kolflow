@@ -1,29 +1,40 @@
 ﻿"use client";
 
 import { useState } from 'react';
-import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { IconSparkles, IconArrowLeft } from '../../components/Icons';
 
-export default function LoginPage() {
+export default function RegisterPage() {
   const router = useRouter();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const res = await signIn('credentials', {
-      email,
-      password,
-      redirect: false,
-    });
+    setLoading(true);
+    setError('');
 
-    if (res?.error) {
-      setError('Invalid credentials');
-    } else {
-      router.push('/dashboard');
+    try {
+      const res = await fetch('/api/auth/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || 'Failed to register');
+      }
+
+      router.push('/login?registered=true');
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -44,17 +55,29 @@ export default function LoginPage() {
           </div>
         </div>
         
-        <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white text-center mb-2">Welcome back</h2>
-        <p className="text-sm text-slate-500 dark:text-slate-400 text-center mb-8">Sign in to your KOLFlow account</p>
+        <h2 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white text-center mb-2">Create an account</h2>
+        <p className="text-sm text-slate-500 dark:text-slate-400 text-center mb-8">Join KOLFlow to manage your campaigns</p>
 
         {error && <div className="mb-4 p-3 bg-red-50 text-red-600 rounded-lg text-sm text-center">{error}</div>}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
+            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Full Name</label>
+            <input 
+              type="text" 
+              required
+              placeholder="e.g. Budi Santoso"
+              className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg outline-none focus:ring-2 focus:ring-slate-900 dark:focus:ring-slate-100 text-slate-900 dark:text-white"
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+          </div>
+          <div>
             <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Email</label>
             <input 
               type="email" 
               required
+              placeholder="budi@example.com"
               className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg outline-none focus:ring-2 focus:ring-slate-900 dark:focus:ring-slate-100 text-slate-900 dark:text-white"
               value={email}
               onChange={e => setEmail(e.target.value)}
@@ -65,26 +88,31 @@ export default function LoginPage() {
             <input 
               type="password" 
               required
+              placeholder="••••••••"
+              minLength={6}
               className="w-full px-4 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg outline-none focus:ring-2 focus:ring-slate-900 dark:focus:ring-slate-100 text-slate-900 dark:text-white"
               value={password}
               onChange={e => setPassword(e.target.value)}
             />
           </div>
-          <button type="submit" className="w-full py-2.5 px-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium rounded-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors">
-            Sign In
+          <button 
+            type="submit" 
+            disabled={loading}
+            className="w-full py-2.5 px-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-medium rounded-lg hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors disabled:opacity-50 mt-2"
+          >
+            {loading ? 'Creating account...' : 'Sign Up'}
           </button>
         </form>
         
         <div className="mt-6 text-center text-sm text-slate-500 dark:text-slate-400">
-          Don't have an account?{' '}
-          <Link href="/register" className="font-medium text-slate-900 dark:text-white hover:underline">
-            Sign Up
+          Already have an account?{' '}
+          <Link href="/login" className="font-medium text-slate-900 dark:text-white hover:underline">
+            Sign In
           </Link>
         </div>
       </div>
     </div>
   );
 }
-
 
 

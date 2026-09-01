@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useRef, useState } from 'react';
 import { DashboardLayout } from '../../components/DashboardLayout';
@@ -169,7 +169,7 @@ export default function SettingsPage() {
           <h2 className="text-lg font-medium tracking-tight text-slate-900 dark:text-white mb-6 border-b border-slate-100 dark:border-slate-800 pb-4">Keyboard Shortcuts</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              { keys: ['⌘', 'K'], label: 'Open Command Palette (Mac)' },
+              { keys: ['âŒ˜', 'K'], label: 'Open Command Palette (Mac)' },
               { keys: ['Ctrl', 'K'], label: 'Open Command Palette (Win)' },
               { keys: ['Esc'], label: 'Close modals & menus' },
             ].map((shortcut, i) => (
@@ -212,6 +212,7 @@ export default function SettingsPage() {
     </DashboardLayout>
   );
 }
+
 
 
 

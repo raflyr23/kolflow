@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
@@ -359,7 +359,7 @@ export default function CampaignsPage() {
                       <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center text-xs text-slate-500 dark:text-slate-400 gap-1.5">
                         <IconCalendar className="w-3.5 h-3.5" />
                         <span>
-                          {campaign.startDate ? formatDate(campaign.startDate) : 'No Start'} — {campaign.endDate ? formatDate(campaign.endDate) : 'No End'}
+                          {campaign.startDate ? formatDate(campaign.startDate) : 'No Start'} â€” {campaign.endDate ? formatDate(campaign.endDate) : 'No End'}
                         </span>
                       </div>
                     </Link>
@@ -558,6 +558,7 @@ export default function CampaignsPage() {
     </DashboardLayout>
   );
 }
+
 
 
 

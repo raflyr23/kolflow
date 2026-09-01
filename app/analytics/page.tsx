@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import React, { useMemo } from 'react';
 import { DashboardLayout } from '../../components/DashboardLayout';
@@ -268,6 +268,7 @@ export default function AnalyticsPage() {
     </DashboardLayout>
   );
 }
+
 
 
 

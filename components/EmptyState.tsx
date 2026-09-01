@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 interface EmptyStateProps {
   title: string;
@@ -36,6 +36,7 @@ export const EmptyState = ({ title, description, action, variant = 'no-data' }: 
     </div>
   );
 };
+
 
 
 
