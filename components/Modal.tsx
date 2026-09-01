@@ -39,21 +39,21 @@ export const Modal = ({ title, onClose, children, size = 'md', footer }: ModalPr
     >
       <div
         ref={contentRef}
-        className={`bg-white rounded-lg shadow-lg w-full ${sizeClasses[size]} overflow-hidden animate-scale-in`}
+        className={`bg-white dark:bg-slate-900 rounded-lg shadow-lg w-full ${sizeClasses[size]} overflow-hidden animate-scale-in`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="flex justify-between items-center px-6 py-4 border-b border-slate-200">
-          <h2 className="text-lg font-semibold text-slate-900">{title}</h2>
+        <div className="flex justify-between items-center px-6 py-4 border-b border-slate-200 dark:border-slate-800">
+          <h2 className="text-lg font-semibold text-slate-900 dark:text-white">{title}</h2>
           <button
             onClick={onClose}
-            className="text-slate-400 hover:text-slate-600 transition-colors p-1 rounded-md hover:bg-slate-100"
+            className="text-slate-400 hover:text-slate-600 dark:text-slate-400 transition-colors p-1 rounded-md hover:bg-slate-100 dark:bg-slate-800"
           >
             <IconClose />
           </button>
         </div>
         <div className="px-6 py-5">{children}</div>
         {footer && (
-          <div className="px-6 py-4 border-t border-slate-100 bg-slate-50 flex justify-end gap-3">
+          <div className="px-6 py-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/30 flex justify-end gap-3">
             {footer}
           </div>
         )}
@@ -61,3 +61,4 @@ export const Modal = ({ title, onClose, children, size = 'md', footer }: ModalPr
     </div>
   );
 };
+

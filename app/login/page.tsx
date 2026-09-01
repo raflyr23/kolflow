@@ -50,7 +50,7 @@ export default function LoginPage() {
   if (isAuth) return null; // Prevent flicker while redirecting
 
   return (
-    <div className="min-h-screen flex bg-slate-50 font-sans">
+    <div className="min-h-screen flex bg-slate-50 dark:bg-slate-800/30 font-sans">
       {/* Left Side - Hidden on Mobile */}
       <div className="hidden lg:flex flex-col flex-1 bg-slate-900 text-white p-12 relative overflow-hidden">
         {/* Decorative background */}
@@ -64,14 +64,14 @@ export default function LoginPage() {
         
         <div className="relative z-10 flex flex-col h-full">
           <div className="flex items-center gap-3 mb-16">
-            <div className="w-10 h-10 bg-slate-1000 rounded-lg flex items-center justify-center shadow-lg shadow-indigo-500/20">
+            <div className="w-10 h-10 bg-slate-100 dark:bg-slate-8000 rounded-lg flex items-center justify-center shadow-lg shadow-indigo-500/20">
               <IconSparkles className="w-6 h-6 text-white" />
             </div>
-            <span className="font-bold text-2xl tracking-tight">KOLFlow</span>
+            <span className="font-semibold tracking-tight text-2xl tracking-tight">KOLFlow</span>
           </div>
 
           <div className="mt-auto mb-20 max-w-lg">
-            <h1 className="text-4xl font-bold leading-tight mb-6">
+            <h1 className="text-4xl font-semibold tracking-tight leading-tight mb-6">
               The modern operating system for influencer marketing.
             </h1>
             <div className="space-y-4">
@@ -94,7 +94,7 @@ export default function LoginPage() {
 
       {/* Right Side - Login Form */}
       <div className="flex-1 flex flex-col justify-center px-6 sm:px-12 md:px-20 lg:px-24 relative">
-        <Link href="/" className="absolute top-8 left-6 sm:left-12 md:left-20 lg:left-24 flex items-center gap-2 text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors">
+        <Link href="/" className="absolute top-8 left-6 sm:left-12 md:left-20 lg:left-24 flex items-center gap-2 text-sm font-medium text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:text-white transition-colors">
           <IconChevronRight className="w-4 h-4 rotate-180" />
           Back to Home
         </Link>
@@ -103,40 +103,40 @@ export default function LoginPage() {
             <div className="w-10 h-10 bg-slate-900 rounded-lg flex items-center justify-center">
               <IconSparkles className="w-6 h-6 text-white" />
             </div>
-            <span className="font-bold text-2xl tracking-tight text-slate-900">KOLFlow</span>
+            <span className="font-semibold tracking-tight text-2xl tracking-tight text-slate-900 dark:text-white">KOLFlow</span>
           </div>
 
           <div className="mb-8 text-center lg:text-left">
-            <h2 className="text-3xl font-bold text-slate-900 mb-2">Welcome back</h2>
-            <p className="text-slate-500">Sign in to your workspace to continue.</p>
+            <h2 className="text-3xl font-semibold tracking-tight text-slate-900 dark:text-white mb-2">Welcome back</h2>
+            <p className="text-slate-500 dark:text-slate-400">Sign in to your workspace to continue.</p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-5">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Email address</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Email address</label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 required
-                className="w-full h-9 px-4 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900/20 focus:border-slate-900 transition-all shadow-sm"
+                className="w-full h-9 px-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-900/20 focus:border-slate-900 transition-all shadow-sm"
               />
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1.5">Password</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1.5">Password</label>
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   required
-                  className="w-full h-9 pl-4 pr-11 bg-white border border-slate-200 rounded-lg text-slate-900 focus:outline-none focus:ring-2 focus:ring-slate-900/20 focus:border-slate-900 transition-all shadow-sm"
+                  className="w-full h-9 pl-4 pr-11 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-slate-900/20 focus:border-slate-900 transition-all shadow-sm"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 transition-colors p-1"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:text-slate-400 transition-colors p-1"
                 >
                   {showPassword ? <IconEyeOff className="w-5 h-5" /> : <IconEye className="w-5 h-5" />}
                 </button>
@@ -161,10 +161,10 @@ export default function LoginPage() {
 
           <div className="relative my-8">
             <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-slate-200"></div>
+              <div className="w-full border-t border-slate-200 dark:border-slate-800"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-slate-50 text-slate-500 font-medium">Or skip the form</span>
+              <span className="px-4 bg-slate-50 dark:bg-slate-800/30 text-slate-500 dark:text-slate-400 font-medium">Or skip the form</span>
             </div>
           </div>
 
@@ -172,13 +172,13 @@ export default function LoginPage() {
             type="button"
             onClick={handleDemoLogin}
             disabled={isLoading}
-            className="w-full h-9 bg-white text-slate-900 border-2 border-slate-200 rounded-lg font-semibold hover:border-slate-900 hover:bg-slate-50 focus:outline-none focus:ring-2 focus:ring-slate-900/20 active:scale-[0.98] transition-all disabled:opacity-70 flex items-center justify-center gap-2 shadow-sm"
+            className="w-full h-9 bg-white dark:bg-slate-900 text-slate-900 dark:text-white border border-slate-200 dark:border-slate-800 rounded-lg font-semibold hover:border-slate-900 hover:bg-slate-50 dark:bg-slate-800/30 focus:outline-none focus:ring-2 focus:ring-slate-900/20 active:scale-[0.98] transition-all disabled:opacity-70 flex items-center justify-center gap-2 shadow-sm"
           >
             <IconSparkles className="w-4 h-4" />
             Try Demo Instantly
           </button>
 
-          <div className="mt-8 p-4 bg-slate-100/50 border border-indigo-100 rounded-lg text-sm text-indigo-800 text-center">
+          <div className="mt-8 p-4 bg-slate-100 dark:bg-slate-800/50 border border-indigo-100 rounded-lg text-sm text-indigo-800 text-center">
             <p className="font-medium mb-1">Demo Credentials</p>
             <p className="opacity-80">Email: admin@kolflow.demo</p>
             <p className="opacity-80">Password: password</p>
@@ -188,3 +188,6 @@ export default function LoginPage() {
     </div>
   );
 }
+
+
+

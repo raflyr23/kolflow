@@ -29,6 +29,8 @@ interface AppContextType {
   exportData: () => string;
   importData: (jsonStr: string) => boolean;
   showToast: (msg: string, variant?: 'success' | 'error' | 'info') => void;
+  theme: 'light' | 'dark';
+  toggleTheme: () => void;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
@@ -37,6 +39,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const router = useRouter();
   const [isMounted, setIsMounted] = useState(false);
   const [isAuth, setIsAuth] = useState(false);
+  const [theme, setTheme] = useState<'light'|'dark'>('light');
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [activityLog, setActivityLog] = useState<ActivityLog[]>([]);
   const [toast, setToast] = useState<Toast | null>(null);
@@ -45,6 +48,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     const auth = localStorage.getItem('kolflow_auth');
     if (auth === 'true') {
       setIsAuth(true);
+    }
+    const storedTheme = localStorage.getItem('kolflow_theme');
+    if (storedTheme === 'dark') {
+      setTheme('dark');
+      document.documentElement.classList.add('dark');
     }
     
     const storedCampaigns = localStorage.getItem('kolflow_campaigns');
@@ -102,6 +110,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       kolId
     };
     saveActivity([newEntry, ...activityLog]);
+  };
+
+    const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('kolflow_theme', newTheme);
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
   };
 
   const login = () => {
@@ -227,7 +246,9 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
       resetData,
       exportData,
       importData,
-      showToast
+      showToast,
+      theme,
+      toggleTheme
     }}>
       {children}
       {toast && (
@@ -251,3 +272,5 @@ export const useApp = () => {
   }
   return context;
 };
+
+

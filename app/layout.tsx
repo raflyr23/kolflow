@@ -18,6 +18,17 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className} suppressHydrationWarning>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              try {
+                if (localStorage.getItem('kolflow_theme') === 'dark') {
+                  document.documentElement.classList.add('dark');
+                }
+              } catch (_) {}
+            `,
+          }}
+        />
         <AppProvider>
           {children}
         </AppProvider>
@@ -25,3 +36,5 @@ export default function RootLayout({
     </html>
   );
 }
+
+

@@ -17,7 +17,7 @@ import {
   IconArrowDown,
   IconAlertCircle
 } from '../../components/Icons';
-import { formatCurrency, formatNumber, formatDate, cn } from '../../lib/utils';
+import { formatCurrency, formatCurrencyCompact, formatNumber, formatDate, cn } from '../../lib/utils';
 import { Campaign, CampaignStatus } from '../../lib/types';
 
 export default function CampaignsPage() {
@@ -160,7 +160,7 @@ export default function CampaignsPage() {
     switch (status) {
       case 'Active': return 'bg-blue-100 text-blue-800 border-blue-200';
       case 'Completed': return 'bg-green-100 text-green-800 border-green-200';
-      case 'Draft': return 'bg-slate-100 text-slate-800 border-slate-200';
+      case 'Draft': return 'bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 border-slate-200 dark:border-slate-800';
       default: return 'bg-gray-100 text-gray-800 border-gray-200';
     }
   };
@@ -171,14 +171,14 @@ export default function CampaignsPage() {
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-            <h1 className="text-3xl font-bold text-slate-900 tracking-tight">Campaigns</h1>
+            <h1 className="text-3xl font-medium tracking-tight text-slate-900 dark:text-white tracking-tight">Campaigns</h1>
             <div className="mt-2 flex items-center gap-3">
-              <span className="text-sm text-slate-500">Overview:</span>
+              <span className="text-sm text-slate-500 dark:text-slate-400">Overview:</span>
               <div className="flex items-center gap-2">
                 <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                   {stats.active} Active
                 </span>
-                <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 text-slate-800">
+                <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
                   {stats.draft} Draft
                 </span>
                 <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
@@ -197,7 +197,7 @@ export default function CampaignsPage() {
         </div>
 
         {/* Filters and Controls */}
-        <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between bg-white p-4 rounded-lg shadow-sm border border-slate-200/60">
+        <div className="flex flex-col lg:flex-row gap-4 items-start lg:items-center justify-between bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800/60 dark:border-slate-800/60">
           <div className="flex flex-1 flex-col sm:flex-row gap-4 w-full">
             <div className="relative flex-1 max-w-md">
               <IconSearch className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
@@ -206,14 +206,14 @@ export default function CampaignsPage() {
                 placeholder="Search campaigns..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 rounded-lg border border-slate-200 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition-all"
+                className="w-full pl-10 pr-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition-all"
               />
             </div>
             
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value as any)}
-              className="px-4 py-2 rounded-lg border border-slate-200 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition-all bg-white"
+              className="px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition-all bg-white dark:bg-slate-900"
             >
               <option value="All">All Statuses</option>
               <option value="Active">Active</option>
@@ -223,12 +223,12 @@ export default function CampaignsPage() {
           </div>
 
           <div className="flex items-center gap-3 w-full lg:w-auto justify-end">
-            <div className="flex items-center border border-slate-200 rounded-lg overflow-hidden bg-slate-50">
+            <div className="flex items-center border border-slate-200 dark:border-slate-800 rounded-lg overflow-hidden bg-slate-50 dark:bg-slate-800/30">
               <button
                 onClick={() => setViewMode('grid')}
                 className={cn(
                   "p-2 transition-colors",
-                  viewMode === 'grid' ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-700"
+                  viewMode === 'grid' ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm" : "text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-300"
                 )}
                 title="Grid View"
               >
@@ -238,7 +238,7 @@ export default function CampaignsPage() {
                 onClick={() => setViewMode('list')}
                 className={cn(
                   "p-2 transition-colors",
-                  viewMode === 'list' ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-700"
+                  viewMode === 'list' ? "bg-white dark:bg-slate-900 text-slate-900 dark:text-white shadow-sm" : "text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-300"
                 )}
                 title="List View"
               >
@@ -247,11 +247,11 @@ export default function CampaignsPage() {
             </div>
             
             <div className="flex items-center gap-2">
-              <span className="text-sm text-slate-500 font-medium">Sort by:</span>
+              <span className="text-sm text-slate-500 dark:text-slate-400 font-medium">Sort by:</span>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value as any)}
-                className="px-3 py-2 rounded-lg border border-slate-200 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition-all bg-white text-sm"
+                className="px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 focus:border-slate-900 focus:ring-1 focus:ring-slate-900 outline-none transition-all bg-white dark:bg-slate-900 text-sm"
               >
                 <option value="date">Date Created</option>
                 <option value="name">Name</option>
@@ -260,7 +260,7 @@ export default function CampaignsPage() {
               </select>
               <button
                 onClick={() => setSortOrder(sortOrder === 'asc' ? 'desc' : 'asc')}
-                className="p-2 border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors text-slate-600"
+                className="p-2 border border-slate-200 dark:border-slate-800 rounded-lg hover:bg-slate-50 dark:bg-slate-800/30 transition-colors text-slate-600 dark:text-slate-400"
                 title={sortOrder === 'asc' ? 'Ascending' : 'Descending'}
               >
                 {sortOrder === 'asc' ? <IconArrowUp className="w-4 h-4" /> : <IconArrowDown className="w-4 h-4" />}
@@ -289,7 +289,7 @@ export default function CampaignsPage() {
         ) : (
           <>
             {viewMode === 'grid' ? (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {filteredAndSortedCampaigns.map((campaign, idx) => {
                   const progress = campaign.budget > 0 ? Math.min(100, Math.round((campaign.spent / campaign.budget) * 100)) : 0;
                   const totalViews = campaign.kols.reduce((sum, kol) => sum + kol.views, 0);
@@ -298,11 +298,11 @@ export default function CampaignsPage() {
                     <Link
                       key={campaign.id}
                       href={`/campaigns/${campaign.id}`}
-                      className="group block bg-white rounded-lg p-5 shadow-sm border border-slate-200/60 hover:shadow-md hover:border-indigo-300 transition-all duration-200 animate-fade-in-up"
+                      className="group block bg-white dark:bg-slate-900 rounded-lg p-4 border border-slate-200 dark:border-slate-800/60 dark:border-slate-800/60 hover:shadow-md hover:border-indigo-300 transition-all duration-200 animate-fade-in-up"
                       style={{ animationDelay: `${idx * 50}ms` }}
                     >
                       <div className="flex justify-between items-start mb-3">
-                        <h3 className="font-semibold text-lg text-slate-900 group-hover:text-slate-900 transition-colors line-clamp-1">
+                        <h3 className="font-medium text-lg text-slate-900 dark:text-white group-hover:text-slate-900 dark:text-white transition-colors line-clamp-1">
                           {campaign.name}
                         </h3>
                         <span className={cn("px-2.5 py-0.5 rounded-full text-xs font-medium border", getStatusColor(campaign.status))}>
@@ -313,19 +313,19 @@ export default function CampaignsPage() {
                       {campaign.tags && campaign.tags.length > 0 && (
                         <div className="flex flex-wrap gap-1.5 mb-4">
                           {campaign.tags.slice(0, 3).map((tag, i) => (
-                            <span key={i} className="px-2 py-0.5 bg-slate-100 text-slate-600 text-[11px] rounded-md font-medium">
+                            <span key={i} className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[11px] rounded-md font-medium">
                               #{tag}
                             </span>
                           ))}
                           {campaign.tags.length > 3 && (
-                            <span className="px-2 py-0.5 bg-slate-100 text-slate-600 text-[11px] rounded-md font-medium">
+                            <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-[11px] rounded-md font-medium">
                               +{campaign.tags.length - 3}
                             </span>
                           )}
                         </div>
                       )}
 
-                      <div className="flex items-center gap-4 mb-4 text-sm text-slate-600">
+                      <div className="flex items-center gap-4 mb-4 text-sm text-slate-600 dark:text-slate-400">
                         <div className="flex items-center gap-1.5">
                           <IconUsers className="w-4 h-4 text-slate-400" />
                           <span>{campaign.kols.length} KOLs</span>
@@ -338,25 +338,25 @@ export default function CampaignsPage() {
 
                       <div className="space-y-1 mb-4">
                         <div className="flex justify-between text-sm">
-                          <span className="text-slate-500">Budget</span>
-                          <span className="font-semibold text-slate-900">{formatCurrency(campaign.budget)}</span>
+                          <span className="text-slate-500 dark:text-slate-400">Budget</span>
+                          <span className="font-medium text-slate-900 dark:text-white truncate ml-2">{formatCurrencyCompact(campaign.budget)}</span>
                         </div>
-                        <div className="w-full bg-slate-100 rounded-full h-2 overflow-hidden">
+                        <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2 overflow-hidden">
                           <div 
                             className={cn(
                               "h-full rounded-full transition-all duration-500",
-                              progress > 90 ? "bg-red-500" : progress > 70 ? "bg-amber-500" : "bg-slate-1000"
+                              progress > 90 ? "bg-red-500" : progress > 70 ? "bg-amber-500" : "bg-slate-100 dark:bg-slate-8000"
                             )}
                             style={{ width: `${progress}%` }}
                           />
                         </div>
-                        <div className="flex justify-between text-xs text-slate-500">
-                          <span>{formatCurrency(campaign.spent)} spent</span>
+                        <div className="flex justify-between text-xs text-slate-500 dark:text-slate-400">
+                          <span className="truncate mr-2">{formatCurrencyCompact(campaign.spent)} spent</span>
                           <span>{progress}%</span>
                         </div>
                       </div>
 
-                      <div className="pt-4 border-t border-slate-100 flex items-center text-xs text-slate-500 gap-1.5">
+                      <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center text-xs text-slate-500 dark:text-slate-400 gap-1.5">
                         <IconCalendar className="w-3.5 h-3.5" />
                         <span>
                           {campaign.startDate ? formatDate(campaign.startDate) : 'No Start'} — {campaign.endDate ? formatDate(campaign.endDate) : 'No End'}
@@ -367,37 +367,37 @@ export default function CampaignsPage() {
                 })}
               </div>
             ) : (
-              <div className="bg-white rounded-lg shadow-sm border border-slate-200/60 overflow-hidden">
+              <div className="bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800/60 dark:border-slate-800/60 overflow-hidden">
                 <div className="overflow-x-auto">
                   <table className="w-full text-left border-collapse">
                     <thead>
-                      <tr className="bg-slate-50/80 border-b border-slate-200/60">
-                        <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider cursor-pointer hover:text-slate-900" onClick={() => toggleSort('name')}>
+                      <tr className="bg-slate-50 dark:bg-slate-800/30/80 border-b border-slate-200 dark:border-slate-800/60 dark:border-slate-800/60">
+                        <th className="px-6 py-4 text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider cursor-pointer hover:text-slate-900 dark:text-white" onClick={() => toggleSort('name')}>
                           Campaign Name
                         </th>
-                        <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Status</th>
-                        <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">KOLs</th>
-                        <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider cursor-pointer hover:text-slate-900" onClick={() => toggleSort('budget')}>
+                        <th className="px-6 py-4 text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Status</th>
+                        <th className="px-6 py-4 text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">KOLs</th>
+                        <th className="px-6 py-4 text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider cursor-pointer hover:text-slate-900 dark:text-white" onClick={() => toggleSort('budget')}>
                           Budget & Spent
                         </th>
-                        <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider cursor-pointer hover:text-slate-900" onClick={() => toggleSort('progress')}>
+                        <th className="px-6 py-4 text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider cursor-pointer hover:text-slate-900 dark:text-white" onClick={() => toggleSort('progress')}>
                           Progress
                         </th>
-                        <th className="px-6 py-4 text-xs font-semibold text-slate-500 uppercase tracking-wider">Timeline</th>
+                        <th className="px-6 py-4 text-xs font-medium text-slate-500 dark:text-slate-400 uppercase tracking-wider">Timeline</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-slate-100">
                       {filteredAndSortedCampaigns.map((campaign) => {
                         const progress = campaign.budget > 0 ? Math.min(100, Math.round((campaign.spent / campaign.budget) * 100)) : 0;
                         return (
-                          <tr key={campaign.id} className="hover:bg-slate-50/50 transition-colors group">
+                          <tr key={campaign.id} className="hover:bg-slate-50 dark:bg-slate-800/30/50 dark:bg-slate-800/50 transition-colors group">
                             <td className="px-6 py-4">
                               <Link href={`/campaigns/${campaign.id}`} className="block">
-                                <div className="font-medium text-slate-900 group-hover:text-slate-900 transition-colors">{campaign.name}</div>
+                                <div className="font-medium text-slate-900 dark:text-white group-hover:text-slate-900 dark:text-white transition-colors">{campaign.name}</div>
                                 {campaign.tags && campaign.tags.length > 0 && (
                                   <div className="flex flex-wrap gap-1 mt-1">
                                     {campaign.tags.slice(0, 2).map((tag, i) => (
-                                      <span key={i} className="text-[10px] text-slate-500">#{tag}</span>
+                                      <span key={i} className="text-[10px] text-slate-500 dark:text-slate-400">#{tag}</span>
                                     ))}
                                     {campaign.tags.length > 2 && <span className="text-[10px] text-slate-400">+{campaign.tags.length - 2}</span>}
                                   </div>
@@ -409,30 +409,30 @@ export default function CampaignsPage() {
                                 {campaign.status}
                               </span>
                             </td>
-                            <td className="px-6 py-4 text-sm text-slate-600">
+                            <td className="px-6 py-4 text-sm text-slate-600 dark:text-slate-400">
                               {campaign.kols.length}
                             </td>
                             <td className="px-6 py-4">
-                              <div className="text-sm font-medium text-slate-900">{formatCurrency(campaign.budget)}</div>
-                              <div className="text-xs text-slate-500">{formatCurrency(campaign.spent)} spent</div>
+                              <div className="text-sm font-medium text-slate-900 dark:text-white">{formatCurrencyCompact(campaign.budget)}</div>
+                              <div className="text-xs text-slate-500 dark:text-slate-400">{formatCurrencyCompact(campaign.spent)} spent</div>
                             </td>
                             <td className="px-6 py-4">
                               <div className="w-24">
-                                <div className="w-full bg-slate-100 rounded-full h-1.5 overflow-hidden mb-1">
+                                <div className="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-1.5 overflow-hidden mb-1">
                                   <div 
                                     className={cn(
                                       "h-full rounded-full transition-all",
-                                      progress > 90 ? "bg-red-500" : progress > 70 ? "bg-amber-500" : "bg-slate-1000"
+                                      progress > 90 ? "bg-red-500" : progress > 70 ? "bg-amber-500" : "bg-slate-100 dark:bg-slate-8000"
                                     )}
                                     style={{ width: `${progress}%` }}
                                   />
                                 </div>
-                                <div className="text-xs text-slate-500 text-right">{progress}%</div>
+                                <div className="text-xs text-slate-500 dark:text-slate-400 text-right">{progress}%</div>
                               </div>
                             </td>
-                            <td className="px-6 py-4 text-xs text-slate-600">
-                              <div className="whitespace-nowrap">{campaign.startDate ? formatDate(campaign.startDate) : '-'}</div>
-                              <div className="whitespace-nowrap text-slate-400">to {campaign.endDate ? formatDate(campaign.endDate) : '-'}</div>
+                            <td className="px-6 py-4 text-xs text-slate-600 dark:text-slate-400">
+                              <div className="whitespace-nowrap" suppressHydrationWarning>{campaign.startDate ? formatDate(campaign.startDate) : '-'}</div>
+                              <div className="whitespace-nowrap text-slate-400" suppressHydrationWarning>to {campaign.endDate ? formatDate(campaign.endDate) : '-'}</div>
                             </td>
                           </tr>
                         );
@@ -459,7 +459,7 @@ export default function CampaignsPage() {
               <button
                 type="button"
                 onClick={() => setIsModalOpen(false)}
-                className="px-4 py-2 text-slate-600 font-medium hover:bg-slate-100 rounded-lg transition-colors"
+                className="px-4 py-2 text-slate-600 dark:text-slate-400 font-medium hover:bg-slate-100 dark:bg-slate-800 rounded-lg transition-colors"
               >
                 Cancel
               </button>
@@ -482,7 +482,7 @@ export default function CampaignsPage() {
             )}
             
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Campaign Name *</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Campaign Name *</label>
               <input
                 type="text"
                 required
@@ -494,7 +494,7 @@ export default function CampaignsPage() {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Description</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Description</label>
               <textarea
                 value={formData.description}
                 onChange={e => setFormData({ ...formData, description: e.target.value })}
@@ -506,7 +506,7 @@ export default function CampaignsPage() {
             
             <div className="grid grid-cols-2 gap-4">
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">Start Date</label>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Start Date</label>
                 <input
                   type="date"
                   value={formData.startDate}
@@ -515,7 +515,7 @@ export default function CampaignsPage() {
                 />
               </div>
               <div>
-                <label className="block text-sm font-medium text-slate-700 mb-1">End Date</label>
+                <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">End Date</label>
                 <input
                   type="date"
                   value={formData.endDate}
@@ -526,9 +526,9 @@ export default function CampaignsPage() {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Total Budget (IDR) *</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Total Budget (IDR) *</label>
               <div className="relative">
-                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500">Rp</span>
+                <span className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 dark:text-slate-400">Rp</span>
                 <input
                   type="number"
                   required
@@ -542,7 +542,7 @@ export default function CampaignsPage() {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">Tags</label>
+              <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">Tags</label>
               <input
                 type="text"
                 value={formData.tags}
@@ -550,7 +550,7 @@ export default function CampaignsPage() {
                 className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-slate-900 focus:border-slate-900 outline-none transition-all"
                 placeholder="Comma separated (e.g. fashion, summer, promo)"
               />
-              <p className="mt-1 text-xs text-slate-500">Separate multiple tags with commas.</p>
+              <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">Separate multiple tags with commas.</p>
             </div>
           </form>
         </Modal>
@@ -558,3 +558,9 @@ export default function CampaignsPage() {
     </DashboardLayout>
   );
 }
+
+
+
+
+
+

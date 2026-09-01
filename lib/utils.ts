@@ -3,6 +3,13 @@ export function formatCurrency(amount: number): string {
   return 'Rp ' + amount.toLocaleString('id-ID');
 }
 
+// Format IDR currency compact: 50000000 -> "Rp 50M", 1500000000 -> "Rp 1.5B"
+export function formatCurrencyCompact(amount: number): string {
+  if (amount >= 1000000000) return 'Rp ' + (amount / 1000000000).toFixed(1) + 'B';
+  if (amount >= 1000000) return 'Rp ' + (amount / 1000000).toFixed(1) + 'M';
+  return 'Rp ' + amount.toLocaleString('id-ID');
+}
+
 // Smart number format: 1200 → "1.2K", 1500000 → "1.5M"
 export function formatNumber(num: number): string {
   if (num >= 1000000) return (num / 1000000).toFixed(1) + 'M';
@@ -59,7 +66,50 @@ export function calculateCPV(cost: number, views: number): string {
   return 'Rp ' + Math.round(cost / views).toLocaleString('id-ID');
 }
 
+
+// Calculate CPE (Cost Per Engagement)
+export function calculateCPE(cost: number, views: number, engagementRate: number): string {
+  if (views === 0 || engagementRate === 0) return '-';
+  const engagements = views * (engagementRate / 100);
+  return 'Rp ' + Math.round(cost / engagements).toLocaleString('id-ID');
+}
+
+// Export Campaign to CSV
+export function exportCampaignToCSV(campaign: any) {
+  const headers = ['KOL Name', 'Handle', 'Platform', 'Status', 'Cost/Post', 'Views', 'Engagement Rate', 'Link'];
+  
+  const csvContent = [
+    headers.join(','),
+    ...campaign.kols.map((kol: any) => {
+      return [
+        " + kol.name + ",
+        '@' + kol.name.toLowerCase().replace(/\s+/g, ''),
+        kol.platform,
+        kol.status,
+        kol.costPerPost,
+        kol.views || 0,
+        kol.engagementRate || 0,
+        ''
+      ].join(',');
+    })
+  ].join('\n');
+
+  const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.setAttribute('href', url);
+  link.setAttribute('download', `campaign_${campaign.name.toLowerCase().replace(/\s+/g, '_')}_kols.csv`);
+  link.style.visibility = 'hidden';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
 // Classname merger utility
 export function cn(...classes: (string | boolean | undefined | null)[]): string {
   return classes.filter(Boolean).join(' ');
 }
+
+
+
+
+

@@ -49,18 +49,18 @@ export const ConfirmDialog = ({
 
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-fade-in" onClick={onCancel}>
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-sm overflow-hidden animate-scale-in" onClick={(e) => e.stopPropagation()}>
+      <div className="bg-white dark:bg-slate-900 rounded-lg shadow-lg w-full max-w-sm overflow-hidden animate-scale-in" onClick={(e) => e.stopPropagation()}>
         <div className="p-6">
           <div className={`w-10 h-10 rounded-full ${styles.icon} flex items-center justify-center mb-4`}>
             <IconAlertCircle className="w-5 h-5" />
           </div>
-          <h3 className="text-lg font-semibold text-slate-900 mb-2">{title}</h3>
-          <p className="text-sm text-slate-500 leading-relaxed">{message}</p>
+          <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">{title}</h3>
+          <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">{message}</p>
         </div>
-        <div className="px-6 py-4 border-t border-slate-100 bg-slate-50 flex justify-end gap-3">
+        <div className="px-6 py-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50 dark:bg-slate-800/30 flex justify-end gap-3">
           <button
             onClick={onCancel}
-            className="px-4 py-2 text-sm font-medium text-slate-700 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition"
+            className="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 border border-slate-300 rounded-lg hover:bg-slate-50 dark:bg-slate-800/30 transition"
           >
             {cancelLabel}
           </button>
@@ -75,4 +75,5 @@ export const ConfirmDialog = ({
     </div>
   );
 };
+
 

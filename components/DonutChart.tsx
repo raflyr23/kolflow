@@ -67,8 +67,8 @@ export const DonutChart = ({
         {/* Center label */}
         {(centerLabel || centerValue) && (
           <div className="absolute inset-0 flex flex-col items-center justify-center">
-            {centerValue && <span className="text-xl font-bold text-slate-900">{centerValue}</span>}
-            {centerLabel && <span className="text-xs text-slate-500">{centerLabel}</span>}
+            {centerValue && <span className="text-xl font-semibold tracking-tight text-slate-900 dark:text-white">{centerValue}</span>}
+            {centerLabel && <span className="text-xs text-slate-500 dark:text-slate-400">{centerLabel}</span>}
           </div>
         )}
       </div>
@@ -77,11 +77,13 @@ export const DonutChart = ({
         {data.map((segment, i) => (
           <div key={i} className="flex items-center gap-1.5">
             <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: segment.color }} />
-            <span className="text-xs text-slate-600">{segment.label}</span>
-            <span className="text-xs font-medium text-slate-900">{segment.value}</span>
+            <span className="text-xs text-slate-600 dark:text-slate-400">{segment.label}</span>
+            <span className="text-xs font-medium text-slate-900 dark:text-white">{segment.value}</span>
           </div>
         ))}
       </div>
     </div>
   );
 };
+
+

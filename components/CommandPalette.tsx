@@ -115,25 +115,25 @@ const CommandPalette: React.FC = () => {
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-[20vh] bg-black/40 backdrop-blur-sm" onClick={() => setIsOpen(false)}>
       <div 
-        className="w-full max-w-lg bg-white rounded-lg shadow-lg overflow-hidden" 
+        className="w-full max-w-lg bg-white dark:bg-slate-900 rounded-lg shadow-lg overflow-hidden" 
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center px-4 py-3 border-b border-slate-100">
+        <div className="flex items-center px-4 py-3 border-b border-slate-100 dark:border-slate-800">
           <IconSearch className="w-5 h-5 text-slate-400 mr-3" />
           <input
             ref={inputRef}
             type="text"
-            className="flex-1 bg-transparent outline-none text-slate-900 placeholder:text-slate-400"
+            className="flex-1 bg-transparent outline-none text-slate-900 dark:text-white placeholder:text-slate-400"
             placeholder="Search commands, campaigns..."
             value={query}
             onChange={e => setQuery(e.target.value)}
           />
-          <span className="text-xs text-slate-400 px-2 py-1 bg-slate-100 rounded">Esc</span>
+          <span className="text-xs text-slate-400 px-2 py-1 bg-slate-100 dark:bg-slate-800 rounded">Esc</span>
         </div>
 
         <div className="max-h-80 overflow-y-auto p-2">
           {filteredItems.length === 0 ? (
-            <div className="py-8 text-center text-sm text-slate-500">
+            <div className="py-8 text-center text-sm text-slate-500 dark:text-slate-400">
               No results found.
             </div>
           ) : (
@@ -149,7 +149,7 @@ const CommandPalette: React.FC = () => {
                     <div
                       key={item.id}
                       className={`flex items-center justify-between px-3 py-2 rounded-lg cursor-pointer group ${
-                        isSelected ? 'bg-slate-100' : 'hover:bg-slate-50'
+                        isSelected ? 'bg-slate-100 dark:bg-slate-800' : 'hover:bg-slate-50 dark:bg-slate-800/30'
                       }`}
                       onClick={() => {
                         item.action();
@@ -158,15 +158,15 @@ const CommandPalette: React.FC = () => {
                       onMouseEnter={() => setSelectedIndex(currentIndex)}
                     >
                       <div className="flex items-center gap-3">
-                        <div className={`p-1.5 rounded-md ${isSelected ? 'bg-white shadow-sm' : 'bg-slate-100 group-hover:bg-white group-hover:shadow-sm'}`}>
+                        <div className={`p-1.5 rounded-md ${isSelected ? 'bg-white dark:bg-slate-900 shadow-sm' : 'bg-slate-100 dark:bg-slate-800 group-hover:bg-white dark:bg-slate-900 group-hover:shadow-sm'}`}>
                           {item.icon}
                         </div>
                         <div>
-                          <div className={`text-sm font-medium ${isSelected ? 'text-slate-900' : 'text-slate-700'}`}>
+                          <div className={`text-sm font-medium ${isSelected ? 'text-slate-900 dark:text-white' : 'text-slate-700 dark:text-slate-300'}`}>
                             {item.label}
                           </div>
                           {item.description && (
-                            <div className="text-xs text-slate-500">{item.description}</div>
+                            <div className="text-xs text-slate-500 dark:text-slate-400">{item.description}</div>
                           )}
                         </div>
                       </div>
@@ -179,19 +179,19 @@ const CommandPalette: React.FC = () => {
           )}
         </div>
 
-        <div className="px-4 py-3 bg-slate-50 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+        <div className="px-4 py-3 bg-slate-50 dark:bg-slate-800/30 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-500 dark:text-slate-400">
           <div className="flex items-center gap-4">
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-sans">&uarr;</kbd>
-              <kbd className="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-sans">&darr;</kbd>
+              <kbd className="px-1.5 py-0.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded font-sans">&uarr;</kbd>
+              <kbd className="px-1.5 py-0.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded font-sans">&darr;</kbd>
               Navigate
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-sans">&crarr;</kbd>
+              <kbd className="px-1.5 py-0.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded font-sans">&crarr;</kbd>
               Select
             </span>
             <span className="flex items-center gap-1">
-              <kbd className="px-1.5 py-0.5 bg-white border border-slate-200 rounded font-sans">Esc</kbd>
+              <kbd className="px-1.5 py-0.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded font-sans">Esc</kbd>
               Close
             </span>
           </div>
@@ -202,4 +202,5 @@ const CommandPalette: React.FC = () => {
 };
 
 export default CommandPalette;
+
 

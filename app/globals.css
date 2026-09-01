@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:is(.dark *));
 
 /* Design Tokens */
 :root {
@@ -18,16 +19,18 @@
   --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
 }
 
-/* Force light mode */
-input, textarea, select {
-  color: #0f172a !important;
-  background-color: #ffffff !important;
-  color-scheme: light !important;
+/* Base themes */
+:root {
+  color-scheme: light;
 }
-
+:root.dark {
+  color-scheme: dark;
+}
 body {
-  color: #0f172a;
-  background-color: #f8fafc;
+  @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100;
+}
+input, textarea, select {
+  @apply bg-white text-slate-900 dark:bg-slate-900 dark:text-slate-100;
 }
 
 /* Hide scrollbar utility */
@@ -161,3 +164,4 @@ body {
 .stagger-children > *:nth-child(7) { animation-delay: 300ms; }
 .stagger-children > *:nth-child(8) { animation-delay: 350ms; }
 .stagger-children > *:nth-child(n) { animation-fill-mode: both; }
+

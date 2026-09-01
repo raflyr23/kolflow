@@ -33,7 +33,7 @@ export const Tabs = ({ tabs, activeTab, onChange }: TabsProps) => {
   }, [activeTab]);
 
   return (
-    <div ref={containerRef} className="relative border-b border-slate-200">
+    <div ref={containerRef} className="relative border-b border-slate-200 dark:border-slate-800">
       <div className="flex gap-0">
         {tabs.map((tab) => (
           <button
@@ -42,8 +42,8 @@ export const Tabs = ({ tabs, activeTab, onChange }: TabsProps) => {
             onClick={() => onChange(tab.id)}
             className={`px-4 py-3 text-sm font-medium transition-colors relative ${
               activeTab === tab.id
-                ? 'text-slate-900'
-                : 'text-slate-500 hover:text-slate-700'
+                ? 'text-slate-900 dark:text-white'
+                : 'text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:text-slate-300'
             }`}
           >
             {tab.label}
@@ -51,7 +51,7 @@ export const Tabs = ({ tabs, activeTab, onChange }: TabsProps) => {
               <span className={`ml-2 text-xs px-1.5 py-0.5 rounded-full ${
                 activeTab === tab.id
                   ? 'bg-slate-900 text-white'
-                  : 'bg-slate-100 text-slate-500'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
               }`}>
                 {tab.count}
               </span>
@@ -67,3 +67,4 @@ export const Tabs = ({ tabs, activeTab, onChange }: TabsProps) => {
     </div>
   );
 };
+

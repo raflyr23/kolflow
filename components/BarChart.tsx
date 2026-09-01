@@ -23,7 +23,7 @@ export const BarChart = ({ data, height = 200, showValues = true }: BarChartProp
           return (
             <div key={i} className="flex-1 flex flex-col items-center gap-1 h-full justify-end">
               {showValues && (
-                <span className="text-xs font-medium text-slate-600">
+                <span className="text-xs font-medium text-slate-600 dark:text-slate-400">
                   {item.value >= 1000 ? (item.value / 1000).toFixed(1) + 'K' : item.value}
                 </span>
               )}
@@ -40,13 +40,14 @@ export const BarChart = ({ data, height = 200, showValues = true }: BarChartProp
           );
         })}
       </div>
-      <div className="flex gap-3 mt-2 border-t border-slate-100 pt-2">
+      <div className="flex gap-3 mt-2 border-t border-slate-100 dark:border-slate-800 pt-2">
         {data.map((item, i) => (
-          <div key={i} className="flex-1 text-center">
-            <span className="text-[11px] text-slate-500 leading-tight block truncate">{item.label}</span>
+          <div key={i} className="flex-1 min-w-0 text-center">
+            <span className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight block truncate" title={item.label}>{item.label}</span>
           </div>
         ))}
       </div>
     </div>
   );
 };
+
