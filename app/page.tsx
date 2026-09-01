@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import Link from 'next/link';
 import { useApp } from '../components/AppProvider';
@@ -199,21 +199,31 @@ export default function LandingPage() {
       </main>
 
       {/* Footer */}
-      <footer className="py-8 px-6 bg-slate-900 text-slate-400 text-center text-sm">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <p>Â© {new Date().getFullYear()} KOLFlow. Built as a portfolio project.</p>
-          <div className="flex items-center gap-4 text-xs font-medium">
-            <span className="px-2 py-1 rounded bg-slate-800">React 19</span>
-            <span className="px-2 py-1 rounded bg-slate-800">Next.js 16</span>
-            <span className="px-2 py-1 rounded bg-slate-800">Tailwind CSS 4</span>
-            <span className="px-2 py-1 rounded border border-slate-700 text-slate-300">No external UI libraries</span>
+      <footer className="py-12 px-6 border-t border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 mt-24">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-slate-900 dark:bg-white rounded-lg flex items-center justify-center">
+              <IconSparkles className="w-4 h-4 text-white dark:text-slate-900" />
+            </div>
+            <span className="font-semibold text-slate-900 dark:text-white tracking-tight">KOLFlow</span>
+          </div>
+          <div className="flex items-center gap-8 text-sm font-medium text-slate-500 dark:text-slate-400">
+            <Link href="https://github.com/raflyr23/kolflow" target="_blank" rel="noopener noreferrer" className="hover:text-slate-900 dark:hover:text-white transition-colors">GitHub</Link>
+          </div>
+        </div>
+        <div className="max-w-6xl mx-auto mt-8 pt-8 border-t border-slate-200 dark:border-slate-800/60 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-500">
+          <p>© {new Date().getFullYear()} KOLFlow Inc. All rights reserved.</p>
+          <div className="flex items-center gap-4">
+            <span className="hover:text-slate-900 dark:hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
+            <span className="hover:text-slate-900 dark:hover:text-white cursor-pointer transition-colors">Terms of Service</span>
           </div>
         </div>
       </footer>
     </div>
   );
+
+
+
+
+
 }
-
-
-
-
