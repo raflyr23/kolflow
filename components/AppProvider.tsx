@@ -61,10 +61,23 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     if (status === 'authenticated') {
       setIsLoading(true);
       fetch('/api/campaigns')
-        .then(res => res.json())
+        .then(async res => {
+          const text = await res.text();
+          if (!res.ok) {
+            console.error('API Error:', res.status, text);
+            throw new Error(`API Error ${res.status}: ${text}`);
+          }
+          if (!text) return [];
+          try {
+            return JSON.parse(text);
+          } catch (e) {
+            console.error('JSON Parse Error on:', text);
+            throw new Error('Invalid JSON response');
+          }
+        })
         .then(data => {
           if (Array.isArray(data)) {
-            const parsed = data.map(c => ({
+            const parsed = data.map((c: any) => ({
               ...c,
               tags: typeof c.tags === 'string' ? JSON.parse(c.tags) : c.tags
             }));
