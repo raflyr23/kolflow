@@ -1,15 +1,23 @@
-﻿"use client";
+"use client";
 
 import React, { useRef, useState } from 'react';
 import { DashboardLayout } from '../../components/DashboardLayout';
 import { useApp } from '../../components/AppProvider';
 import { IconDownload, IconRefresh, IconCheck, IconAlertCircle } from '../../components/Icons';
 
+import { useSession } from 'next-auth/react';
+import { getInitials } from '../../lib/utils';
+
 export default function SettingsPage() {
+  const { data: session } = useSession();
   const { exportData, importData, resetData, showToast } = useApp();
   const fileInputRef = useRef<HTMLInputElement>(null);
   
   const [showResetConfirm, setShowResetConfirm] = useState(false);
+  
+  const userName = session?.user?.name || 'User';
+  const userEmail = session?.user?.email || 'user@example.com';
+  const initials = session?.user?.name ? getInitials(session.user.name) : 'U';
 
   const handleExport = () => {
     try {
@@ -71,14 +79,14 @@ export default function SettingsPage() {
         <section className="bg-white dark:bg-slate-900 p-4 rounded-lg border border-slate-200 dark:border-slate-800/60 dark:border-slate-800/60">
           <h2 className="text-lg font-medium tracking-tight text-slate-900 dark:text-white mb-6 border-b border-slate-100 dark:border-slate-800 pb-4">Profile</h2>
           <div className="flex items-center gap-4">
-            <div className="w-20 h-20 bg-indigo-600 rounded-full flex items-center justify-center text-white text-2xl font-medium tracking-tight shadow-md">
-              AD
+            <div className="w-20 h-20 bg-indigo-600 rounded-full flex items-center justify-center text-white text-2xl font-medium tracking-tight shadow-md uppercase">
+              {initials}
             </div>
             <div>
-              <h3 className="text-xl font-medium tracking-tight text-slate-900 dark:text-white">Admin</h3>
-              <p className="text-slate-500 dark:text-slate-400 mb-2">admin@kolflow.demo</p>
+              <h3 className="text-xl font-medium tracking-tight text-slate-900 dark:text-white">{userName}</h3>
+              <p className="text-slate-500 dark:text-slate-400 mb-2">{userEmail}</p>
               <div className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
-                Administrator
+                User
               </div>
             </div>
           </div>
@@ -169,7 +177,7 @@ export default function SettingsPage() {
           <h2 className="text-lg font-medium tracking-tight text-slate-900 dark:text-white mb-6 border-b border-slate-100 dark:border-slate-800 pb-4">Keyboard Shortcuts</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              { keys: ['âŒ˜', 'K'], label: 'Open Command Palette (Mac)' },
+              { keys: ['\u2318', 'K'], label: 'Open Command Palette (Mac)' },
               { keys: ['Ctrl', 'K'], label: 'Open Command Palette (Win)' },
               { keys: ['Esc'], label: 'Close modals & menus' },
             ].map((shortcut, i) => (

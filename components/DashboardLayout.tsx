@@ -3,11 +3,13 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
 import { useApp } from './AppProvider';
 import { IconMenu, IconClose, IconHome, IconUsers, IconChart, IconSettings, IconSearch, IconLogout, IconChevronRight, IconSun, IconMoon } from './Icons';
 import CommandPalette from './CommandPalette';
 import NotificationBell from './NotificationBell';
 import { Tooltip } from './Tooltip';
+import { getInitials } from '../lib/utils';
 
 const navItems = [
   { name: 'Dashboard', href: '/dashboard', icon: <IconHome className="w-5 h-5" /> },
@@ -18,6 +20,7 @@ const navItems = [
 ];
 
 const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const { data: session } = useSession();
   const { isAuth, logout, theme, toggleTheme } = useApp();
   const pathname = usePathname();
   const router = useRouter();
@@ -119,12 +122,12 @@ const DashboardLayout: React.FC<{ children: React.ReactNode }> = ({ children }) 
           <div className="border-t border-slate-100 dark:border-slate-800 p-3">
             <div className={`flex items-center ${sidebarCollapsed ? 'justify-center' : 'justify-between'} overflow-hidden`}>
               <div className="flex items-center gap-2.5">
-                <div className="w-8 h-8 rounded-full bg-slate-900 dark:bg-slate-700 text-white flex items-center justify-center text-xs font-medium flex-shrink-0">
-                  AD
+                <div className="w-8 h-8 rounded-full bg-slate-900 dark:bg-slate-700 text-white flex items-center justify-center text-xs font-medium flex-shrink-0 uppercase">
+                  {session?.user?.name ? getInitials(session.user.name) : 'U'}
                 </div>
                 <div className={`flex flex-col transition-opacity duration-200 ${sidebarCollapsed ? 'opacity-0 w-0' : 'opacity-100'}`}>
-                  <span className="text-sm font-medium text-slate-900 dark:text-white">Admin</span>
-                  <span className="text-xs text-slate-400">admin@kolflow.demo</span>
+                  <span className="text-sm font-medium text-slate-900 dark:text-white truncate max-w-[130px]">{session?.user?.name || 'User'}</span>
+                  <span className="text-xs text-slate-400 truncate max-w-[130px]">{session?.user?.email || 'user@example.com'}</span>
                 </div>
               </div>
               {!sidebarCollapsed && (

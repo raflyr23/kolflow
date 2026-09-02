@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import { useSession } from 'next-auth/react';
 import { DashboardLayout } from '../../components/DashboardLayout';
 import { useApp } from '../../components/AppProvider';
 import { BarChart } from '../../components/BarChart';
@@ -11,6 +12,7 @@ import { formatCurrency, formatCurrencyCompact, formatNumber, formatRelativeDate
 import { IconTrendingUp, IconUsers, IconDollarSign, IconCalendar, IconChevronRight } from '../../components/Icons';
 
 export default function DashboardPage() {
+  const { data: session } = useSession();
   const { campaigns, activityLog, isLoading } = useApp();
 
   const getGreeting = () => {
@@ -19,6 +21,8 @@ export default function DashboardPage() {
     if (hour < 17) return 'Good afternoon';
     return 'Good evening';
   };
+  
+  const userName = session?.user?.name ? session.user.name.split(' ')[0] : 'Admin';
 
   const activeCampaignsList = campaigns.filter(c => c.status === 'Active');
   const activeCampaigns = activeCampaignsList.length;
@@ -76,7 +80,7 @@ export default function DashboardPage() {
     <DashboardLayout>
       <div className="mb-8">
         <h1 className="text-xl font-semibold tracking-tight text-slate-900 dark:text-white" suppressHydrationWarning>
-          {getGreeting()}, Admin
+          {getGreeting()}, {userName}
         </h1>
         <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">Here&apos;s what&apos;s happening across your campaigns.</p>
       </div>
