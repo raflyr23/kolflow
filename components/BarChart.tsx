@@ -1,54 +1,84 @@
-﻿import React from 'react';
+'use client';
 
-interface BarChartData {
-  label: string;
-  value: number;
-  color?: string;
-}
+import React from 'react';
+import {
+  BarChart as RechartsBarChart,
+  Bar,
+  XAxis,
+  YAxis,
+  Tooltip,
+  CartesianGrid,
+  ResponsiveContainer,
+  Cell,
+} from 'recharts';
 
 interface BarChartProps {
-  data: BarChartData[];
+  data: { label: string; value: number; color?: string }[];
   height?: number;
   showValues?: boolean;
 }
 
-export const BarChart = ({ data, height = 200, showValues = true }: BarChartProps) => {
-  const maxValue = Math.max(...data.map(d => d.value), 1);
+const CustomTooltip = ({ active, payload, label }: any) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-slate-900 text-white rounded-lg shadow-lg px-3 py-2 text-xs">
+        <p className="font-medium mb-1">{label}</p>
+        <p className="text-slate-300">
+          Value: <span className="text-white font-medium">{payload[0].value}</span>
+        </p>
+      </div>
+    );
+  }
+  return null;
+};
+
+export const BarChart: React.FC<BarChartProps> = ({
+  data,
+  height = 300,
+  showValues = false,
+}) => {
+  if (!data || data.length === 0) {
+    return (
+      <div
+        className="flex items-center justify-center text-sm text-slate-400 bg-slate-50 dark:bg-slate-900 rounded-xl"
+        style={{ height }}
+      >
+        No data available
+      </div>
+    );
+  }
 
   return (
-    <div className="w-full">
-      <div className="flex items-end gap-3" style={{ height }}>
-        {data.map((item, i) => {
-          const barHeight = (item.value / maxValue) * 100;
-          return (
-            <div key={i} className="flex-1 flex flex-col items-center gap-1 h-full justify-end">
-              {showValues && (
-                <span className="text-xs font-medium text-slate-600 dark:text-slate-400">
-                  {item.value >= 1000 ? (item.value / 1000).toFixed(1) + 'K' : item.value}
-                </span>
-              )}
-              <div
-                className="w-full rounded-t-md animate-grow-height transition-all"
-                style={{
-                  height: `${barHeight}%`,
-                  backgroundColor: item.color || '#0f172a',
-                  animationDelay: `${i * 80}ms`,
-                  minHeight: item.value > 0 ? '4px' : '0px',
-                }}
-              />
-            </div>
-          );
-        })}
-      </div>
-      <div className="flex gap-3 mt-2 border-t border-slate-100 dark:border-slate-800 pt-2">
-        {data.map((item, i) => (
-          <div key={i} className="flex-1 min-w-0 text-center">
-            <span className="text-[11px] text-slate-500 dark:text-slate-400 leading-tight block truncate" title={item.label}>{item.label}</span>
-          </div>
-        ))}
-      </div>
+    <div style={{ width: '100%', height }}>
+      <ResponsiveContainer width="100%" height="100%">
+        <RechartsBarChart data={data} margin={{ top: 10, right: 10, left: 10, bottom: 0 }}>
+          <CartesianGrid 
+            strokeDasharray="3 3" 
+            vertical={false} 
+            stroke="currentColor" 
+            className="text-slate-100 dark:text-slate-800" 
+          />
+          <XAxis 
+            dataKey="label" 
+            axisLine={false} 
+            tickLine={false} 
+            tick={{ fill: '#94a3b8', fontSize: 11 }} 
+            dy={10}
+          />
+          <YAxis hide />
+          <Tooltip content={<CustomTooltip />} cursor={{ fill: 'transparent' }} />
+          <Bar 
+            dataKey="value" 
+            radius={[4, 4, 0, 0]} 
+            animationDuration={800}
+            label={showValues ? { position: 'top', fill: '#94a3b8', fontSize: 11 } : false}
+          >
+            {data.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={entry.color || '#3b82f6'} />
+            ))}
+          </Bar>
+        </RechartsBarChart>
+      </ResponsiveContainer>
     </div>
   );
 };
-
-

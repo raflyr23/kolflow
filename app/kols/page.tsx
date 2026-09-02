@@ -1,6 +1,7 @@
-﻿'use client';
+'use client';
 
 import React, { useMemo } from 'react';
+import Link from 'next/link';
 import { useApp } from '../../components/AppProvider';
 import { DashboardLayout } from '../../components/DashboardLayout';
 import { KOL } from '../../lib/types';
@@ -87,7 +88,7 @@ export default function KolDatabasePage() {
                             {getInitials(kol.name)}
                           </div>
                           <div className="min-w-0 flex-1">
-                            <div className="font-medium text-slate-900 dark:text-white truncate">{kol.name}</div>
+                            <Link href={`/kols/${encodeURIComponent(kol.name)}`} className="font-medium text-slate-900 dark:text-white truncate hover:text-blue-600 dark:hover:text-blue-400 transition-colors block">{kol.name}</Link>
                             <div className="text-xs text-slate-500 dark:text-slate-400 truncate">{kol.handle} &bull; {kol.platform}</div>
                           </div>
                         </div>

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -13,6 +13,7 @@ interface Toast {
 
 interface AppContextType {
   isAuth: boolean;
+  isLoading: boolean;
   login: () => void;
   logout: () => void;
   campaigns: Campaign[];
@@ -43,6 +44,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [campaigns, setCampaigns] = useState<Campaign[]>([]);
   const [activityLog, setActivityLog] = useState<ActivityLog[]>([]);
   const [toast, setToast] = useState<Toast | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const isAuth = status === 'authenticated';
 
@@ -57,6 +59,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 
   useEffect(() => {
     if (status === 'authenticated') {
+      setIsLoading(true);
       fetch('/api/campaigns')
         .then(res => res.json())
         .then(data => {
@@ -68,9 +71,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
             setCampaigns(parsed);
           }
         })
-        .catch(console.error);
+        .catch(console.error)
+        .finally(() => setIsLoading(false));
     } else if (status === 'unauthenticated') {
       setCampaigns([]);
+      setIsLoading(false);
     }
   }, [status]);
 
@@ -198,6 +203,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   return (
     <AppContext.Provider value={{
       isAuth,
+      isLoading,
       login,
       logout,
       campaigns,
@@ -219,14 +225,22 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }}>
       {children}
       {toast && (
-        <div className="fixed bottom-4 right-4 z-50 animate-fade-in-up">
-          <div className={`flex items-center gap-3 px-4 py-3 rounded-lg shadow-lg border ${
-            toast.variant === 'error' ? 'bg-red-50 border-red-200 text-red-800' :
-            toast.variant === 'info' ? 'bg-blue-50 border-blue-200 text-blue-800' :
-            'bg-emerald-50 dark:bg-emerald-900/30 border-emerald-200 dark:border-emerald-800 text-emerald-800 dark:text-emerald-400'
+        <div className="fixed top-4 right-4 z-50 animate-toast-in">
+          <div className={`relative flex items-center gap-3 pl-4 pr-10 py-3 rounded-xl shadow-lg border overflow-hidden ${
+            toast.variant === 'error' ? 'bg-white dark:bg-slate-900 border-red-200 dark:border-red-800 text-red-700 dark:text-red-400' :
+            toast.variant === 'info' ? 'bg-white dark:bg-slate-900 border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-400' :
+            'bg-white dark:bg-slate-900 border-emerald-200 dark:border-emerald-800 text-emerald-700 dark:text-emerald-400'
           }`}>
-            {toast.variant === 'error' ? <IconAlertCircle className="w-5 h-5" /> : <IconCheck className="w-5 h-5" />}
+            {toast.variant === 'error' ? <IconAlertCircle className="w-4 h-4 shrink-0" /> : <IconCheck className="w-4 h-4 shrink-0" />}
             <p className="text-sm font-medium">{toast.message}</p>
+            <button onClick={() => setToast(null)} className="absolute top-2 right-2 p-1 text-slate-400 hover:text-slate-600 dark:hover:text-slate-300 transition-colors">
+              <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+            </button>
+            <div className={`absolute bottom-0 left-0 h-0.5 animate-shrink ${
+              toast.variant === 'error' ? 'bg-red-400' :
+              toast.variant === 'info' ? 'bg-blue-400' :
+              'bg-emerald-400'
+            }`} />
           </div>
         </div>
       )}
